@@ -26,7 +26,7 @@ logging.getLogger("aiohttp.web").setLevel(logging.ERROR)
 
 from pyrogram import __version__
 from info import *
-
+from pyrogram import Client
 from aiohttp import web
 from plugins import web_server
 
@@ -46,6 +46,8 @@ loop = asyncio.get_event_loop()
 async def Lazy_start():
     print('\n')
     print('Initalizing Lazy Bot')
+    LazyPrincessBot = Client(bot_info.username)
+    await LazyPrincessBot.start()
     bot_info = await LazyPrincessBot.get_me()
     LazyPrincessBot.username = bot_info.username
     await initialize_clients()
